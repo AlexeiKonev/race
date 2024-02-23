@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+
+ 
+
 public class JoystickPlayerExample : MonoBehaviour
 {
     public float speed;
@@ -14,18 +19,10 @@ public class JoystickPlayerExample : MonoBehaviour
     {
         if (joisticBackground.activeSelf)
         {
-            Vector3 direction = Vector3.forward
-           * speedForward /*variableJoystick.Vertical*/
-           + Vector3.right
-           * variableJoystick.Horizontal;
-
-            rb.AddForce(direction
-                * speed
-                * Time.fixedDeltaTime,
-                ForceMode.VelocityChange);
+            // Машина движется вперед только если joisticBackground активен
+            Vector3 direction = transform.forward * speedForward
+                                + transform.right * variableJoystick.Horizontal; // Движение влево и вправо
+            rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
         }
-       
-
-      
     }
 }
